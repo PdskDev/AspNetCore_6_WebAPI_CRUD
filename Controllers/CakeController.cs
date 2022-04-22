@@ -37,5 +37,13 @@ public class CakeController: ControllerBase
         await _currentDbContext.SaveChangesAsync();
         return Created($"/get-cake-by-id?id={cake.Id}", cake);
     }
+
+    [HttpPut]
+    public async Task<IActionResult> PutAsync(Cake cakeToUpdate)
+    {
+        _currentDbContext.Cake.Update(cakeToUpdate);
+        await _currentDbContext.SaveChangesAsync();
+        return NoContent();
+    }
         
 }
